@@ -1,9 +1,26 @@
-# Hotel Booking Service
+---
+title: Hotel Booking Service
+description: Spring Boot hotel booking API deployed publicly on Render
+---
 
-A Spring Boot 3 hotel booking backend: property onboarding, availability search, reservation, payment, and cancellation, with in-memory persistence behind repository ports.
+A Spring Boot 3 hotel booking backend deployed publicly on Render. It supports property onboarding, availability search, reservation, payment, and cancellation, with in-memory persistence behind repository ports.
+
+## Live Deployment
+
+The backend service is running at <https://rupeek-hotel-booking.onrender.com>.
+
+| Resource | Public URL |
+|----------|------------|
+| Swagger UI | <https://rupeek-hotel-booking.onrender.com/swagger-ui/index.html> |
+| OpenAPI JSON | <https://rupeek-hotel-booking.onrender.com/v3/api-docs> |
+| Health check | <https://rupeek-hotel-booking.onrender.com/actuator/health> |
+
+> [!NOTE]
+> Render's free service may sleep after a period of inactivity, so the first request can take longer while the instance starts.
 
 ## Table of Contents
 
+- [Live Deployment](#live-deployment)
 - [1. Overview](#1-overview)
 - [2. Assumptions](#2-assumptions)
 - [3. Tech Stack \& Prerequisites](#3-tech-stack--prerequisites)
@@ -92,7 +109,7 @@ $env:JAVA_HOME = "C:\path\to\jdk-17"
 
 There is no database to provision and no migrations to run — repositories are in-memory and reset on every restart.
 
-Once running, the service exposes:
+When running locally, the service exposes:
 
 - Swagger UI: <http://localhost:8080/swagger-ui/index.html>
 - OpenAPI JSON: <http://localhost:8080/v3/api-docs>
