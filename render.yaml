@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: rupeek-hotel-booking
+    runtime: docker
+    plan: free
+    region: singapore
+    healthCheckPath: /actuator/health
+    autoDeploy: true

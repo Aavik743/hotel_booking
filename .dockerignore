@@ -1,0 +1,6 @@
+.git
+.tools
+target
+.idea
+.vscode
+*.zip
