@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Live Spring Boot hotel booking service with Swagger documentation and source code.">
+    <title>Hotel Booking Service | Rupeek</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #17211b;
+            --muted: #5d6861;
+            --paper: #f6f7f2;
+            --surface: #ffffff;
+            --line: #d9dfd8;
+            --green: #176b47;
+            --green-dark: #0e4d33;
+            --coral: #e76f51;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--ink);
+            background:
+                linear-gradient(90deg, rgba(23, 107, 71, 0.05) 1px, transparent 1px),
+                linear-gradient(rgba(23, 107, 71, 0.05) 1px, transparent 1px),
+                var(--paper);
+            background-size: 32px 32px;
+            font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .shell {
+            width: min(1080px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 76px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .brand {
+            font-family: Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--green-dark);
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .status::before {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #2ca56b;
+            box-shadow: 0 0 0 4px rgba(44, 165, 107, 0.14);
+            content: "";
+        }
+
+        main {
+            padding: clamp(64px, 10vw, 120px) 0 72px;
+        }
+
+        .eyebrow {
+            margin: 0 0 18px;
+            color: var(--coral);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 780px;
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(3rem, 8vw, 6.4rem);
+            font-weight: 500;
+            line-height: 0.95;
+            letter-spacing: 0;
+        }
+
+        .summary {
+            max-width: 680px;
+            margin: 28px 0 34px;
+            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.7;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            min-height: 48px;
+            padding: 0 20px;
+            border: 1px solid var(--ink);
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 160ms ease, box-shadow 160ms ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 0 var(--coral);
+        }
+
+        .button.primary {
+            color: #ffffff;
+            background: var(--green-dark);
+            border-color: var(--green-dark);
+        }
+
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top: clamp(64px, 10vw, 112px);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .resource {
+            min-width: 0;
+            padding: 26px 24px 28px;
+            text-decoration: none;
+        }
+
+        .resource + .resource {
+            border-left: 1px solid var(--line);
+        }
+
+        .resource:hover,
+        .resource:focus-visible {
+            background: var(--surface);
+        }
+
+        .resource span {
+            display: block;
+            margin-bottom: 9px;
+            color: var(--coral);
+            font: 700 0.75rem Consolas, monospace;
+        }
+
+        .resource strong {
+            display: block;
+            font-family: Georgia, serif;
+            font-size: 1.25rem;
+        }
+
+        .resource p {
+            margin: 8px 0 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 24px 0 36px;
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        @media (max-width: 700px) {
+            .shell {
+                width: min(100% - 28px, 1080px);
+            }
+
+            header {
+                min-height: 64px;
+            }
+
+            main {
+                padding-top: 52px;
+            }
+
+            .actions,
+            .button {
+                width: 100%;
+            }
+
+            .button {
+                justify-content: center;
+            }
+
+            .resources {
+                grid-template-columns: 1fr;
+            }
+
+            .resource + .resource {
+                border-top: 1px solid var(--line);
+                border-left: 0;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <header>
+            <a class="brand" href="/">Rupeek Engineering</a>
+            <a class="status" href="/actuator/health">Live on Render</a>
+        </header>
+
+        <main>
+            <p class="eyebrow">Spring Boot 3 / Java 17</p>
+            <h1>Hotel Booking Service</h1>
+            <p class="summary">
+                A deployable backend for property onboarding, availability search,
+                reservations, payments, and cancellations. Built with a clean domain model,
+                idempotent payment handling, and concurrency-safe inventory reservation.
+            </p>
+
+            <div class="actions">
+                <a class="button primary" href="/swagger-ui/index.html">Explore Swagger UI</a>
+                <a class="button" href="https://github.com/Aavik743/hotel_booking" target="_blank" rel="noreferrer">View GitHub Repository</a>
+            </div>
+
+            <section class="resources" aria-label="Project resources">
+                <a class="resource" href="/swagger-ui/index.html">
+                    <span>INTERACTIVE</span>
+                    <strong>Swagger UI</strong>
+                    <p>Explore and call every endpoint from the browser.</p>
+                </a>
+                <a class="resource" href="/v3/api-docs">
+                    <span>OPENAPI 3</span>
+                    <strong>API specification</strong>
+                    <p>Inspect the machine-readable JSON contract.</p>
+                </a>
+                <a class="resource" href="/actuator/health">
+                    <span>OPERATIONS</span>
+                    <strong>Health check</strong>
+                    <p>Confirm the deployed service is available.</p>
+                </a>
+            </section>
+        </main>
+
+        <footer>
+            <span>Hotel Booking Service</span>
+            <span>In-memory demo deployment; data resets when the service restarts.</span>
+        </footer>
+    </div>
+</body>
+</html>
